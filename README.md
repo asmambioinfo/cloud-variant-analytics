@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
->>>>>>> 4ab9a0d (README update)
 # cloud-variant-analytics
 
-is a reference implementation of an end-to-end cloud-native data engineering pipeline for genomic variant processing and analytics. The project demonstrates how raw sequencing data can be ingested, processed, annotated, and transformed into analytics-ready datasets using modern AWS data engineering patterns.
+cloud-variant-analytics is a reference implementation of an end-to-end cloud-native data engineering pipeline for **germline genomic variant processing and analytics**. The project demonstrates how raw next-generation sequencing (NGS) data can be ingested, processed, annotated, and transformed into analytics-ready datasets using modern AWS data engineering patterns.
 
-The platform ingests BAM files into Amazon S3, executes containerized variant calling workflows, and enriches results using public clinical and oncology annotation sources. Processed data is normalized and transformed using PySpark on AWS Glue, stored in columnar formats, and exposed for interactive querying through Athena or Redshift Serverless. A lightweight Streamlit application provides visibility into pipeline execution, summary metrics, and curated variant outputs.
+The platform ingests **Illumina paired-end FASTQ files** into Amazon S3, performs alignment using **bwa-mem**, and executes containerized variant calling workflows. Variants are annotated using **public clinical annotation sources (ClinVar)** and transformed into normalized, analytics-ready formats. Data transformations are implemented using **PySpark on AWS Glue**, stored in columnar formats, and exposed for interactive querying via **Athena or Redshift Serverless**. A lightweight **Streamlit** application provides visibility into pipeline execution, quality metrics, and curated variant outputs.
 
-<<<<<<< HEAD
-This project is designed to highlight scalable data pipeline architecture, reproducibility, and cloud best practices rather than clinical interpretation. All workflows are built from scratch using public datasets and synthetic metadata, with no patient data, PHI, or proprietary pipelines included.
-=======
 This project is designed to highlight scalable data pipeline architecture, reproducibility, and cloud best practices rather than clinical interpretation. All workflows are built from scratch using **public datasets and synthetic metadata**, with no patient data, PHI, or proprietary pipelines included.
 
 ## Assumptions (MVP)
@@ -24,13 +16,4 @@ This project is designed to highlight scalable data pipeline architecture, repro
   * adapter and low-quality tail trimming at Phred Q20
   * minimum read length ≥50 bp after trimming
   * report percentage of bases ≥Q30
-=======
-# cloud-variant-analytics
 
-is a reference implementation of an end-to-end cloud-native data engineering pipeline for genomic variant processing and analytics. The project demonstrates how raw sequencing data can be ingested, processed, annotated, and transformed into analytics-ready datasets using modern AWS data engineering patterns.
-
-The platform ingests BAM files into Amazon S3, executes containerized variant calling workflows, and enriches results using public clinical and oncology annotation sources. Processed data is normalized and transformed using PySpark on AWS Glue, stored in columnar formats, and exposed for interactive querying through Athena or Redshift Serverless. A lightweight Streamlit application provides visibility into pipeline execution, summary metrics, and curated variant outputs.
-
-This project is designed to highlight scalable data pipeline architecture, reproducibility, and cloud best practices rather than clinical interpretation. All workflows are built from scratch using public datasets and synthetic metadata, with no patient data, PHI, or proprietary pipelines included.
->>>>>>> bb5c22b (initial project)
->>>>>>> 4ab9a0d (README update)
