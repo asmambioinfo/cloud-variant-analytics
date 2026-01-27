@@ -7,7 +7,7 @@ purpose:
 - read a subset of records from fastq files for quick qc
 - investigate records (header, sequence, plus, and quality) without loading the entire file
 - Two methods for sampling:
-    1. Reservoir sampling: radomly sample k records from the entire file. Notice that we don't need to know hte total number of records in advance.
+    1. Reservoir sampling: radomly sample k records from the entire file. Notice that we don't need to know the total number of records in advance.
         the stream of records is processed one by one and reservioir sampling algorithm ensures that each record has an equal probability of being included 
         or replaced in the sample set. 
     2. head/tail sampling where sample from first n records (head) and last n records (tail) of the fastq file is extracted to investigate potential issues at the beginning or end of the file.
