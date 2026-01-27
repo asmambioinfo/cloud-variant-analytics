@@ -24,7 +24,7 @@ class Issue(object):
     def __init__(self, code: str, message: str, record_idx: Optional[int] = None, read_name: Optional[str] = None, extra: Optional[Dict[str, any]] = None):
         self.code = code # issue code 
         self.message = message # issue message
-        self.record_idx = record
+        self.record_idx = record_idx # 0-based record index if applicable
         self.read_name = read_name 
         self.extra = extra or {}
 
