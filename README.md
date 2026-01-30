@@ -5,7 +5,19 @@
 
 **cloud-variant-analytics** is a reference implementation of an end-to-end, cloud-native data engineering pipeline for germline genomic variant processing and analytics. The project demonstrates how raw next-generation sequencing (NGS) data can be ingested, processed, and transformed into analytics-ready datasets using modern software engineering and cloud architecture patterns.
 
-The focus of this project is **pipeline design, scalability, and reproducibility**, rather than clinical interpretation. All workflows are implemented from scratch using public tools, public reference data, and synthetic metadata. No patient data, PHI, or proprietary pipelines are included.
+The focus of this project is pipeline design, scalability, and reproducibility; **clinical interpretation is intentionally out of scope**. All workflows are implemented using public tools, public reference data, and synthetic metadata. No patient data, PHI, or proprietary pipelines are included.
+
+---
+
+## Development Status
+
+This repository follows a staged, architecture-first development approach.
+
+* `main` reflects a stable, public-facing baseline
+* Active development occurs on feature/test branches
+* Changes are merged into `main` only after testing and documentation updates
+
+This mirrors production practices commonly used in regulated and quality-controlled environments.
 
 ---
 
@@ -22,41 +34,42 @@ The focus of this project is **pipeline design, scalability, and reproducibility
 
 The intended end-to-end workflow includes:
 
-1. **FASTQ ingestion and QC**
+### FASTQ ingestion and QC
 
-   * Illumina paired-end FASTQ support
-   * Sampling-based QC without loading entire files
-   * Basic quality metrics (e.g., read counts, base quality summaries)
+* Illumina paired-end FASTQ support
+* Sampling-based QC without loading entire files
+* Basic quality metrics (e.g., read counts, base quality summaries)
 
-2. **Alignment and variant calling** *(in progress)*
+### Alignment and variant calling *(in progress)*
 
-   * Alignment using `bwa-mem`
-   * Sorted BAM generation
-   * Containerized variant calling workflows
+* Alignment using `bwa-mem`
+* Sorted BAM generation
+* Containerized variant calling workflows
 
-3. **Variant annotation and analytics**
+### Variant annotation and analytics
 
-   * Annotation using public resources (e.g., ClinVar)
-   * Normalization into analytics-ready formats
-   * Columnar storage for downstream querying
+* Annotation using public resources (e.g., ClinVar)
+* Normalization into analytics-ready formats
+* Columnar storage for downstream querying
 
-4. **Visualization and access**
+### Visualization and access
 
-   * Lightweight Streamlit application for pipeline visibility
-   * QC summaries and curated variant outputs
+* Lightweight Streamlit application for pipeline visibility
+* QC summaries and curated variant outputs
 
 ---
 
 ## Assumptions (MVP)
 
-* **Input**: Human whole-exome sequencing (WES), Illumina 2×150 bp paired-end FASTQ
-* **Reference genome**: GRCh38 / hg38
-* **Target regions**: RefSeq exonic intervals with ±50 bp padding (BED)
-* **QC and trimming assumptions**:
+* **Input:** Human whole-exome sequencing (WES), Illumina 2×150 bp paired-end FASTQ
+* **Reference genome:** GRCh38 / hg38
+* **Target regions:** RefSeq exonic intervals with ±50 bp padding (BED)
 
-  * Adapter and low-quality tail trimming at Phred Q20
-  * Minimum read length ≥50 bp after trimming
-  * Reporting percentage of bases ≥Q30
+### QC and trimming assumptions
+
+* Adapter and low-quality tail trimming at Phred Q20
+* Minimum read length ≥50 bp after trimming
+* Reporting percentage of bases ≥Q30
 
 ---
 
@@ -71,22 +84,29 @@ The intended end-to-end workflow includes:
 
 ## Roadmap
 
+Roadmap items are implemented incrementally and merged into `main` only after validation.
+
 * Streamlit interface for:
 
   * Sample upload
   * QC visualization
   * Run history tracking
+
 * Containerized pipeline execution
+
 * Cloud execution using AWS Batch or ECS
+
 * Storage of results in Amazon S3
+
 * Metadata persistence using DynamoDB or Postgres
+
 * Analytics access via Athena or Redshift Serverless
 
 ---
 
 ## Repository Structure
 
-```
+```text
 src/cva/
 ├── cli.py              # Command-line interface (Typer/Click)
 ├── pipeline/
@@ -117,4 +137,5 @@ examples/               # Synthetic configs and demo inputs
 
 ## Disclaimer
 
-This project is for **demonstration and educational purposes only**. It is not intended for clinical use.
+This project is for demonstration and educational purposes only. It is **not intended for clinical use**.
+
